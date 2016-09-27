@@ -1,14 +1,27 @@
 function setup(){
-  createCanvas(400, 200);
+  createCanvas(400, 400);
   background(0);
   console.log("Ready to listen to Input -->");
+}
+
+function preload() {
+  wow = loadImage("./wow.png");
+  angry = loadImage("./angry.png");
+  haha = loadImage("./haha.png");
+  like = loadImage("./like.png");
+  love = loadImage("./love.png");
+  sad = loadImage("./sad.png");
 }
 
 function draw(){
   background(0);
 
-  rect(50, 100, 100, 50);
-  rect(250, 100, 100, 50);
+  image(like,50,50,100,100)
+  image(love,100,50,100,100)
+  image(haha,150,50,100,100)
+  image(wow,200,50,100,100)
+  image(angry,250,50,100,100)
+  image(sad,3000,50,100,100)
 }
 
 function mouseClicked() {
