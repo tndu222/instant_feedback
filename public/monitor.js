@@ -19,8 +19,17 @@ function draw(){
   else if(message_state==1){
     text("Trigger 1", 100, 100);
   }
-  else{
+  else if(message_state==2){
     text("Trigger 2", 100, 100);
+  }
+  else if(message_state==3){
+    text("Trigger 3", 100, 100);
+  }
+  else if(message_state==4){
+    text("Trigger 4", 100, 100);
+  }
+  else if(message_state==5){
+    text("Trigger 5", 100, 100);
   }
 }
 
@@ -32,4 +41,19 @@ socket.on('trigger_1', function(){
 socket.on('trigger_2', function(){
   console.log("trigger 2 listener fired");
   message_state=2;
+})
+
+socket.on('trigger_3', function(){
+  console.log("trigger 3 listener fired");
+  message_state=3;
+})
+
+socket.on('trigger_4', function(){
+  console.log("trigger 4 listener fired");
+  message_state=4;
+})
+
+socket.on('trigger_5', function(){
+  console.log("trigger 5 listener fired");
+  message_state=5;
 })
