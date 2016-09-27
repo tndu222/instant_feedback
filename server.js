@@ -24,6 +24,7 @@ io.sockets.on('connection', function (socket) {
     response.sendStatus(200);
     console.log("trigger 2 pressed");
     socket.emit('trigger_2');
+  })
 
   app.get('/trigger_3', function(request,response){
     // response.json({"status":"success"});
@@ -44,4 +45,4 @@ io.sockets.on('connection', function (socket) {
     console.log("trigger 5 pressed");
     socket.emit('trigger_5');
   })
-})
+});
