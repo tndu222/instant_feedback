@@ -1,3 +1,5 @@
+var like_count = 0, love_count = 0, haha_count = 0, wow_count = 0, angry_count = 0, sad_count = 0;
+
 function setup(){
   createCanvas(400, 650);
   background(0);
@@ -5,12 +7,12 @@ function setup(){
 }
 
 function preload() {
-  wow = loadImage("./wow.png");
-  angry = loadImage("./angry.png");
-  haha = loadImage("./haha.png");
-  like = loadImage("./like.png");
-  love = loadImage("./love.png");
-  sad = loadImage("./sad.png");
+  wow = loadImage("images/wow.png");
+  angry = loadImage("images/angry.png");
+  haha = loadImage("images/haha.png");
+  like = loadImage("images/like.png");
+  love = loadImage("images/love.png");
+  sad = loadImage("images/sad.png");
 }
 
 function draw(){
@@ -23,29 +25,42 @@ function draw(){
   image(angry,150,420,100,100)
   image(sad,150,520,100,100)
 }
-
+//like
 function mouseClicked() {
-  if(mouseX>150&&mouseX<250&&mouseY>20&&mouseY<120){
-    console.log("clicked on trigger_1");
-    httpGet('/trigger_1');
-  }
-
-  if(mouseX>150&&mouseX<250&&mouseY>120&&mouseY<220){
-    console.log("clicked on trigger_2");
-    httpGet('/trigger_2');
-  }
-  if(mouseX>150&&mouseX<250&&mouseY>220&&mouseY<320){
-    console.log("clicked on trigger_3");
-    httpGet('/trigger_3');
-  }
-
-  if(mouseX>150&&mouseX<250&&mouseY>320&&mouseY<420){
-    console.log("clicked on trigger_4");
-    httpGet('/trigger_4');
-  }
-  if(mouseX>150&&mouseX<250&&mouseY>420&&mouseY<520){
-    console.log("clicked on trigger_5");
-    httpGet('/trigger_5');
-  }
-
+    if(mouseX>150&&mouseX<250&&mouseY>20&&mouseY<120){
+        console.log("like!");
+        like_count++;
+        httpGet('/like');
+    }
+//love
+    if(mouseX>150&&mouseX<250&&mouseY>120&&mouseY<220){
+        console.log("love!");
+        love_count++;
+        httpGet('/love');
+    }
+//haha
+    if(mouseX>150&&mouseX<250&&mouseY>220&&mouseY<320){
+        console.log("haha");
+        haha_count++;
+        httpGet('/haha');
+    }
+//wow
+    if(mouseX>150&&mouseX<250&&mouseY>320&&mouseY<420){
+        console.log("wow");
+        wow_count++;
+        httpGet('/wow');
+    }
+//angry
+    if(mouseX>150&&mouseX<250&&mouseY>420&&mouseY<520){
+        console.log("angry");
+        angry_count++;
+        httpGet('/angry');
+    }
+//sad
+    if(mouseX>150&&mouseX<250&&mouseY>520&&mouseY<620){
+        sad_count++;
+        console.log("sad: " + sad_count);
+        httpGet('/sad');
+        
+    }
 }
