@@ -2,7 +2,7 @@
 
 var express = require('express');
 var app = express();
-var server = app.listen(8080, function () {
+var server = app.listen(8000, function () {
   console.log("Meow");
 })
 var io = require('socket.io')(server);    //http://socket.io/docs/
