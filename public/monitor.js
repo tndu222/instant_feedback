@@ -1,4 +1,4 @@
-var socket = io('http://127.0.0.1:8000');     //http://socket.io/docs/
+var socket = io('/terie');     //http://socket.io/docs/
 var message_state = 0;
 
 function setup(){
@@ -21,7 +21,7 @@ function draw(){
     
     fill(255, 102, 153);
 
-    image(wow, -frameCount+400, 100, 100, 100);
+    //image(wow, -frameCount+400, 100, 100, 100);
     textSize(20);
 
   //a very simple state machine
@@ -34,7 +34,7 @@ function draw(){
     }
     else if(message_state==2){
         //text("love", 100, 100);
-        image(love, -frameCount+400, 100, 100, 100);
+        image(like, -frameCount+400, 100, 100, 100);
     }
     else if(message_state==3){
        // text("haha", 100, 100);

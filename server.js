@@ -5,9 +5,12 @@ var app = express();
 var server = app.listen(8000, function () {
   console.log("Meow");
 })
-var io = require('socket.io')(server);    //http://socket.io/docs/
+   //http://socket.io/docs/
 
 app.use(express.static('public'));
+
+var io = require('socket.io')(server);
+var terese = io.of('/terie')
 
 io.sockets.on('connection', function (socket) {
   console.log("Client ID"+socket.id+" connected");
@@ -16,7 +19,7 @@ io.sockets.on('connection', function (socket) {
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("like!");
-    socket.emit('like');
+    terese.emit('like');
   })
 
   app.get('/love', function(request,response){
@@ -30,25 +33,25 @@ io.sockets.on('connection', function (socket) {
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("haha!");
-    socket.emit('haha');
+    terese.emit('haha');
   })
 
   app.get('/wow', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("wow!");
-    socket.emit('wow');
+    terese.emit('wow');
   })
   app.get('/angry', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("angry!");
-    socket.emit('angry');
+    terese.emit('angry');
   })
     app.get('/sad', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("sad!");
-    socket.emit('sad');
+    terese.emit('sad');
   })
 });
