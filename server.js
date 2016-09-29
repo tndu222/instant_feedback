@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var server = app.listen(8081, function () {
-  console.log("Shazam! listening on port 8081");
+  console.log("Meow");
 })
 var io = require('socket.io')(server);    //http://socket.io/docs/
 
@@ -25,4 +25,24 @@ io.sockets.on('connection', function (socket) {
     console.log("trigger 2 pressed");
     socket.emit('trigger_2');
   })
-})
+
+  app.get('/trigger_3', function(request,response){
+    // response.json({"status":"success"});
+    response.sendStatus(200);
+    console.log("trigger 3 pressed");
+    socket.emit('trigger_3');
+  })
+
+  app.get('/trigger_4', function(request,response){
+    // response.json({"status":"success"});
+    response.sendStatus(200);
+    console.log("trigger 4 pressed");
+    socket.emit('trigger_4');
+  })
+  app.get('/trigger_5', function(request,response){
+    // response.json({"status":"success"});
+    response.sendStatus(200);
+    console.log("trigger 5 pressed");
+    socket.emit('trigger_5');
+  })
+});
