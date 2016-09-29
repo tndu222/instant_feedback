@@ -2,46 +2,56 @@
 
 var express = require('express');
 var app = express();
-var server = app.listen(8081, function () {
+var server = app.listen(8000, function () {
   console.log("Meow");
 })
-var io = require('socket.io')(server);    //http://socket.io/docs/
+   //http://socket.io/docs/
 
 app.use(express.static('public'));
+
+var io = require('socket.io')(server);
+var terese = io.of('/terie')
 
 io.sockets.on('connection', function (socket) {
   console.log("Client ID"+socket.id+" connected");
 
-  app.get('/trigger_1', function(request,response){
+  app.get('/like', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
-    console.log("trigger 1 pressed");
-    socket.emit('trigger_1');
+    console.log("like!");
+    terese.emit('like');
   })
 
-  app.get('/trigger_2', function(request,response){
+  app.get('/love', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
-    console.log("trigger 2 pressed");
-    socket.emit('trigger_2');
-
-  app.get('/trigger_3', function(request,response){
-    // response.json({"status":"success"});
-    response.sendStatus(200);
-    console.log("trigger 3 pressed");
-    socket.emit('trigger_3');
+    console.log("love!");
+    socket.emit('love');
   })
 
-  app.get('/trigger_4', function(request,response){
+  app.get('/haha', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
-    console.log("trigger 4 pressed");
-    socket.emit('trigger_4');
+    console.log("haha!");
+    terese.emit('haha');
   })
-  app.get('/trigger_5', function(request,response){
+
+  app.get('/wow', function(request,response){
     // response.json({"status":"success"});
     response.sendStatus(200);
-    console.log("trigger 5 pressed");
-    socket.emit('trigger_5');
+    console.log("wow!");
+    terese.emit('wow');
   })
-})
+  app.get('/angry', function(request,response){
+    // response.json({"status":"success"});
+    response.sendStatus(200);
+    console.log("angry!");
+    terese.emit('angry');
+  })
+    app.get('/sad', function(request,response){
+    // response.json({"status":"success"});
+    response.sendStatus(200);
+    console.log("sad!");
+    terese.emit('sad');
+  })
+});
