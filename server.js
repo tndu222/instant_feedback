@@ -26,7 +26,7 @@ io.sockets.on('connection', function (socket) {
     // response.json({"status":"success"});
     response.sendStatus(200);
     console.log("love!");
-    socket.emit('love');
+    terese.emit('love');
   })
 
   app.get('/haha', function(request,response){

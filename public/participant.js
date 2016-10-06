@@ -1,7 +1,6 @@
-var like_count = 0, love_count = 0, haha_count = 0, wow_count = 0, angry_count = 0, sad_count = 0;
 
 function setup(){
-  createCanvas(400, 650);
+  createCanvas(400, 520);
   background(0);
   console.log("Ready to listen to Input -->");
 }
@@ -18,48 +17,47 @@ function preload() {
 function draw(){
   background(0);
 
-  image(like,150,20,100,100)
-  image(love,150,120,100,100)
-  image(haha,150,220,100,100)
-  image(wow,150,320,100,100)
-  image(angry,150,420,100,100)
-  image(sad,150,520,100,100)
+  image(like,150,5,80,80)
+  image(love,150,90,80,80)
+  image(haha,150,175,80,80)
+  image(wow,150,260,80,80)
+  image(angry,150,345,80,80)
+  image(sad,150,430,80,80)
 }
 //like
 function mouseClicked() {
-    if(mouseX>150&&mouseX<250&&mouseY>20&&mouseY<120){
+    if(mouseX>150&&mouseX<250&&mouseY>5&&mouseY<80){
         console.log("like!");
-        like_count++;
+        
         httpGet('/like');
     }
 //love
-    if(mouseX>150&&mouseX<250&&mouseY>120&&mouseY<220){
+    if(mouseX>150&&mouseX<250&&mouseY>85&&mouseY<165){
         console.log("love!");
-        love_count++;
+     
         httpGet('/love');
     }
 //haha
-    if(mouseX>150&&mouseX<250&&mouseY>220&&mouseY<320){
+    if(mouseX>150&&mouseX<250&&mouseY>175&&mouseY<250){
         console.log("haha");
-        haha_count++;
+     
         httpGet('/haha');
     }
 //wow
-    if(mouseX>150&&mouseX<250&&mouseY>320&&mouseY<420){
+    if(mouseX>150&&mouseX<250&&mouseY>260&&mouseY<335){
         console.log("wow");
-        wow_count++;
+      
         httpGet('/wow');
     }
 //angry
-    if(mouseX>150&&mouseX<250&&mouseY>420&&mouseY<520){
+    if(mouseX>150&&mouseX<250&&mouseY>345&&mouseY<420){
         console.log("angry");
-        angry_count++;
+      
         httpGet('/angry');
     }
 //sad
-    if(mouseX>150&&mouseX<250&&mouseY>520&&mouseY<620){
-        sad_count++;
-        console.log("sad: " + sad_count);
+    if(mouseX>150&&mouseX<250&&mouseY>430&&mouseY<500){
+        console.log("sad");
         httpGet('/sad');
         
     }
