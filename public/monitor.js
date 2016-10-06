@@ -1,10 +1,11 @@
 var socket = io('/terie');     //http://socket.io/docs/
 var message_state = 0;
 var buttons = [];
+
 var like_count = 0, love_count = 0, haha_count=0, wow_count=0, angry_count=0, sad_count=0;
 
 function button(y, imgtype) {
-    this.xpos = 600;
+    this.xpos = width;
     this.ypos = y;
     this.type = imgtype;
 }
@@ -21,7 +22,7 @@ button.prototype.update = function() {
 };
 
 function setup(){
-    createCanvas(600, 400);
+    createCanvas(windowWidth, (windowWidth / 16) * 9);
     background(255);
     frameRate(30);
     smooth();
@@ -39,7 +40,7 @@ function preload() {
 
 
 function draw(){
-    background(255);
+    background(198,198,198,255);
     fill(255, 102, 153);
     text_size = 20;
     
