@@ -1,12 +1,29 @@
 var socket = io('/terie');     //http://socket.io/docs/
 var message_state = 0;
 var buttons = [];
-var y_thing = 100;
+
+function button(y, imgtype) {
+    this.xpos = 400;
+    this.ypos = y;
+    this.type = imgtype;
+}
+
+button.prototype.display = function() {
+    image(this.type, this.xpos, this.ypos, 50, 50);
+};
+
+button.prototype.update = function() {
+    var rando = random(25, 100);
+    var speed = random(.25, 2);
+    this.xpos = this.xpos-speed;
+    this.ypos = this.ypos + sin(frameCount / rando);
+};
 
 function setup(){
-  createCanvas(400, 400);
-  background(0);
-     
+    createCanvas(400, 400);
+    background(255);
+    frameRate(30);
+    smooth();
 }
 
 function preload() {
@@ -21,106 +38,69 @@ function preload() {
 
 
 function draw(){
-    if(frameCount > 400) {
-        frameCount = frameCount - Math.floor(frameCount / 400) * 400;
-    }
-   
-    background(255,255,255,255);
+    background(255); 
     
-    fill(255, 102, 153);
-
-    //image(wow, -frameCount+400, 100, 100, 100);
-    textSize(20);
-    
-  //a very simple state machine
     if(message_state==0){
-        //text("Nothing to See Here", 100, 100);
+        
     }
     else if(message_state==1){
-        //text("like", 100, 100);
-        add_button(like);
-        
-        //image(like, -frameCount+400, 100, 100, 100);
+ 
     }
     else if(message_state==2){
-        //text("love", 100, 100);
-        add_button(love);
-        //image(like, -frameCount+400, 100, 100, 100);
+       
     }
     else if(message_state==3){
-       // text("haha", 100, 100);
-        add_button(haha);
-        //image(haha, -frameCount+400, 100, 100, 100);
+        
     }
     else if(message_state==4){
-       // text("wow", 100, 100);
-        add_button(wow);
-        //image(wow, -frameCount+400, 100, 100, 100);
+        
     }
     else if(message_state==5){
-        //text("angry", 100, 100);
-        add_button(angry);
-        //image(angry, -frameCount+400, 100, 100, 100);
+         
     }
    else if(message_state==6){
-       //text("sad", 100, 100);
-       add_button(sad);
-       //image(sad, -frameCount+400, 100, 100, 100);
+     
   }
     for(var i = 0; i < buttons.length; i++) {
-        buttons[i].display();
-        buttons[i].update();
+         buttons[i].display();
+         buttons[i].update();
     }
+  
 }
-
-
-function add_button(type) {
-    var newButton = {
-        type: type,
-        //final_x: random(0,400),
-        //final_y: random(0,400),
-        init_x: 400,
-        init_y: 100,
-        display: function() {
-            image(type, this.init_x, this.init_y, 100, 100);
-        },
-        update: function() {
-            this.init_x = 400-frameCount ;
-        }
-    };
-    buttons.push(newButton);
-        
-}
-
-
 
 socket.on('like', function(){
-  console.log("like fired");
-  message_state=1;
+    console.log("like fired");
+    message_state=1;
+    buttons.push(new button(25, like));
 })
 
 socket.on('love', function(){
-  console.log("love");
-  message_state=2;
+    console.log("love");
+    message_state=2;
+    buttons.push(new button(50, love));
 })
 
 socket.on('haha', function(){
-  console.log("haha");
-  message_state=3;
+    console.log("haha");
+    message_state=3;
+    buttons.push(new button(75, haha));
 })
 
 socket.on('wow', function(){
-  console.log("wow");
-  message_state=4;
+    console.log("wow");
+    message_state=4;
+    buttons.push(new button(100, wow));
 })
 
 socket.on('angry', function(){
-  console.log("angry");
-  message_state=5;
+    console.log("angry");
+    message_state=5;
+    buttons.push(new button(125, angry));
 })
 
 socket.on('sad', function(){
-  console.log("sad");
-  message_state=6;
+    console.log("sad");
+    message_state=6;
+    buttons.push(new button(175, sad));
 })
 
