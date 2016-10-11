@@ -11,7 +11,7 @@ function button(y, imgtype) {
 }
 
 button.prototype.display = function() {
-    image(this.type, this.xpos, this.ypos, windowHeight/15, windowHeight/18);
+    image(this.type, this.xpos, this.ypos, windowHeight/15, windowHeight/15);
 };
 
 button.prototype.update = function() {
