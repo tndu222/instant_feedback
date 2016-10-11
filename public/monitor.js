@@ -42,52 +42,52 @@ function preload() {
 function draw(){
     background(198,198,198,255);
     fill(255, 102, 153);
-    text_size = 20;
-    
-    image(like, 260, 380, 20,20);
-    text(like_count, 280, 400);
-    
-    image(love, 300, 380, 20, 20);
-    text(love_count, 320, 400);
-    
-    image(haha, 340, 380, 20, 20);
-    text(haha_count, 360, 400);
-    
-    image(wow, 380, 380, 20, 20);
-    text(haha_count, 400, 400);
-    
-    image(angry, 420, 380, 20, 20);
-    text(angry_count, 440, 400);
-    
-    image(sad, 460, 380, 20, 20);
-    text(sad_count, 480, 400);
-    
+    text_size=40;
+
+    image(like, windowWidth/2-220, .85*windowHeight, 40, 40);
+    text(like_count, windowWidth/2-180, .85*windowHeight);
+
+    image(love, windowWidth/2-140, .85*windowHeight, 40, 40);
+    text(love_count, windowWidth/2-100, .85*windowHeight);
+
+    image(haha, windowWidth/2-60, .85*windowHeight, 40, 40);
+    text(haha_count, windowWidth/2-20, .85*windowHeight);
+
+    image(wow, windowWidth/2+20, .85*windowHeight, 40, 40);
+    text(haha_count, windowWidth/2+60, .85*windowHeight);
+
+    image(angry, windowWidth/2+100, .85*windowHeight, 40, 40);
+    text(angry_count, windowWidth/2+140, .85*windowHeight);
+
+    image(sad, windowWidth/2+180, .85*windowHeight, 40, 40);
+    text(sad_count, windowWidth/2+220, .85*windowHeight);
+
     if(message_state==0){
-        
+
     }
     else if(message_state==1){
- 
+
     }
     else if(message_state==2){
-       
+
     }
     else if(message_state==3){
-        
+
     }
     else if(message_state==4){
-        
+
     }
     else if(message_state==5){
-         
+
     }
    else if(message_state==6){
-     
+
   }
     for(var i = 0; i < buttons.length; i++) {
          buttons[i].display();
          buttons[i].update();
     }
-  
+
 }
 
 socket.on('like', function(){
@@ -131,4 +131,3 @@ socket.on('sad', function(){
     buttons.push(new button(175, sad));
     sad_count++;
 })
-
